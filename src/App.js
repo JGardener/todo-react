@@ -9,12 +9,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       title: "To-Do List",
+      subTitle: "Made in React JS",
       toDos: []
     };
-
-    this.createNewToDo = this.createNewToDo.bind(this);
-
-    this.removeToDo = this.removeToDo.bind(this);
   }
 
   createNewToDo = newToDo => {
@@ -40,6 +37,7 @@ class App extends React.Component {
       <div className="App">
         <List
           title={this.state.title}
+          subTitle={this.state.subTitle}
           toDos={this.state.toDos}
           createNewToDo={this.createNewToDo}
           removeToDo={this.removeToDo}

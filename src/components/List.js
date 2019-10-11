@@ -1,7 +1,7 @@
 import React from "react";
 import ListItem from "../components/ListItem";
 
-const List = ({ title, toDos, createNewToDo, removeToDo }) => {
+const List = ({ title, subTitle, toDos, createNewToDo, removeToDo }) => {
   const appendNewToDo = e => {
     if (e.key === "Enter") {
       createNewToDo(e.target.value);
@@ -13,6 +13,7 @@ const List = ({ title, toDos, createNewToDo, removeToDo }) => {
     <div className="list-container">
       <div className="title-container">
         <h1>{title}</h1>
+        <h6>{subTitle}</h6>
       </div>
       <div className="create-new-toDo">
         <input
