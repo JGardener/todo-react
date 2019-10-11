@@ -47,11 +47,11 @@ input {
   padding: 10px;
   border: 1px solid black;
   margin: 5px 0;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 1s;
 }
 
 .toDo-item:hover {
-  background-color: #7f0000;
+  background-color: #1d6102;
 }
 
 .toDo-label {
