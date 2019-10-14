@@ -1,8 +1,6 @@
-Current issues: 
+Known Issues: 
 
-1. Components > List.js
-  1.1 - createNewToDo function isn't defined. WHAT!?
-
+1. Cannot create a list within a list. 
 
 
 

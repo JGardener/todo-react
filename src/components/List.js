@@ -49,6 +49,9 @@ class List extends React.Component {
         );
     }
 }
+
+// == THE OLD WAY YOU DID IT. WE LEARNED SOMETHING TODAY BOYS!
+// == Moved away from a functional component, to a class due to a requirement of handling lists within lists.
 // const List = ({ title, subTitle, toDos, createNewToDo, removeToDo }) => {
 //   const appendNewToDo = e => {
 //     if (e.key === "Enter") {
@@ -56,7 +59,6 @@ class List extends React.Component {
 //       e.target.value = "";
 //     }
 //   };
-//
 //   return (
 //     <div className="list-container">
 //       <div className="title-container">
