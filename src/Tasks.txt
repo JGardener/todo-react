@@ -2,8 +2,8 @@ To-Do
 
 Codepen: https://codepen.io/CS_Nex/pen/QWWwRpE?editors=0010
 
-  1. Your first task is to add the option to the text input,  to flag an item to be a list.
-  2. Your next task would be,   Based on that flag,  determine if the item being added to the list should be text,  or a list
-  3. figure out how to conditionally render text or a list
-    3.1 - I reckon that lines 92 to 94 are a clue here. 
-  4. Your fourth task would be,  figure out how to allow multiple lists that can be updated individually. Incidentally, this is the issue with the codepen. 
+{x}  1. Your first task is to add the option to the text input,  to flag an item to be a list.
+{}  2. Your next task would be,   Based on that flag,  determine if the item being added to the list should be text,  or a list
+{}  3. figure out how to conditionally render text or a list
+{}    3.1 - I reckon that lines 92 to 94 are a clue here. 
+{}  4. Your fourth task would be,  figure out how to allow multiple lists that can be updated individually. Incidentally, this is the issue with the codepen. 

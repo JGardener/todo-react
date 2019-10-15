@@ -2,11 +2,34 @@ import React from "react";
 import ListItem from "../components/ListItem";
 
 class List extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemIsList: false
+    };
+  }
   appendNewToDo = e => {
     if (e.key === "Enter") {
-      this.props.createNewToDo(e.target.value);
+      const innerItemIsList = {
+        label: e.target.value
+      };
+      if (this.state.itemIsList) {
+        innerItemIsList.component = List;
+        innerItemIsList.toDos = [];
+      }
+      this.props.createNewToDo(this.innerItemisList);
       e.target.value = "";
+      this.setState({
+        itemIsList: false
+      });
+      console.log(innerItemIsList);
     }
+  };
+
+  toggleItemIsList = e => {
+    this.setState({
+      itemIsList: true
+    });
   };
 
   render() {
@@ -20,7 +43,13 @@ class List extends React.Component {
           <input
             type="text"
             onKeyPress={this.appendNewToDo}
-            placeholder='Press "Enter" to add your new to-do.'
+            placeholder='Press "Enter" to add to-do.'
+          />
+          <span>Is this item a list?</span>
+          <input
+            type="checkbox"
+            checked={this.itemIsList}
+            onChange={this.toggleItemIsList}
           />
         </div>
         <ul className="toDo-list">
