@@ -13,6 +13,7 @@ class List extends React.Component {
       this.props.createNewToDo(e.target.value);
       e.target.value = "";
     }
+    // Provisional attempt at creating a list within a list. Not working yet, but getting closer, I think.
     if (this.state.itemIsList === true) {
       return (
         <div className="list-container">
