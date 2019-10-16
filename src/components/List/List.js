@@ -1,5 +1,5 @@
 import React from "react";
-import ListItem from "../components/ListItem";
+import ListItem from "../ListItem/ListItem";
 
 class List extends React.Component {
   constructor(props) {
@@ -7,52 +7,55 @@ class List extends React.Component {
     this.state = {
       itemIsList: false
     };
+    console.log(this.state.itemIsList);
   }
   appendNewToDo = e => {
     if (e.key === "Enter") {
       this.props.createNewToDo(e.target.value);
       e.target.value = "";
     }
-    // Provisional attempt at creating a list within a list. Not working yet, but getting closer, I think.
-    if (this.state.itemIsList === true) {
-      return (
-        <div className="list-container">
-          <div className="title-container">
-            <h1>Hey</h1>
-          </div>
-          <div className="create-new-toDo">
-            <input
-              type="text"
-              onKeyPress={this.appendNewToDo}
-              placeholder='Press "Enter" to add to-do.'
-            />
-            <span>Is this item a list?</span>
-            <input
-              type="checkbox"
-              checked={this.state.itemIsList}
-              onChange={this.toggleItemIsList}
-            />
-          </div>
-          <ul className="toDo-list">
-            {this.props.toDos.map(newToDo => (
-              <ListItem
-                key={newToDo}
-                newToDo={newToDo}
-                createNewToDo={this.props.createNewToDo}
-                removeToDo={this.props.removeToDo}
-              />
-            ))}
-          </ul>
-        </div>
-      );
-    }
+    // Contained within the appendToDo function after the first if statement =>
+    //
+    // Provisional attempt at creating a list within a list.Not working yet, but getting closer, I think.
+    //   if (this.state.itemIsList === "true") {
+    //     return (
+    //       <div className="inner-list-container">
+    //         <div className="title-container">
+    //           <h1>Hey</h1>
+    //         </div>
+    //         <div className="create-new-toDo">
+    //           <input
+    //             type="text"
+    //             onKeyPress={this.appendNewToDo}
+    //             placeholder='Press "Enter" to add to-do.'
+    //           />
+    //           <span>Is this item a list?</span>
+    //           <input
+    //             type="checkbox"
+    //             checked={this.state.itemIsList}
+    //             onChange={this.toggleItemIsList}
+    //           />
+    //         </div>
+    //         <ul className="toDo-list">
+    //           {this.props.toDos.map(newToDo => (
+    //             <ListItem
+    //               key={newToDo}
+    //               newToDo={newToDo}
+    //               createNewToDo={this.props.createNewToDo}
+    //               removeToDo={this.props.removeToDo}
+    //             />
+    //           ))}
+    //         </ul>
+    //       </div>
+    //     );
+    //   }
   };
 
+  // The checkbox and toggleItemIsList are not functioning as expected. Ticking the box makes state false, whilst unchecking makes it true. Whoops!
   toggleItemIsList = e => {
     this.setState({
       itemIsList: e.target.checked
     });
-    console.log(this.state.itemIsList);
   };
 
   render() {
