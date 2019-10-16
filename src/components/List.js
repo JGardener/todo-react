@@ -10,26 +10,48 @@ class List extends React.Component {
   }
   appendNewToDo = e => {
     if (e.key === "Enter") {
-      const innerItemIsList = {
-        label: e.target.value
-      };
-      if (this.state.itemIsList) {
-        innerItemIsList.component = List;
-        innerItemIsList.toDos = [];
-      }
-      this.props.createNewToDo(this.innerItemisList);
+      this.props.createNewToDo(e.target.value);
       e.target.value = "";
-      this.setState({
-        itemIsList: false
-      });
-      console.log(innerItemIsList);
+    }
+    if (this.state.itemIsList === true) {
+      return (
+        <div className="list-container">
+          <div className="title-container">
+            <h1>Hey</h1>
+          </div>
+          <div className="create-new-toDo">
+            <input
+              type="text"
+              onKeyPress={this.appendNewToDo}
+              placeholder='Press "Enter" to add to-do.'
+            />
+            <span>Is this item a list?</span>
+            <input
+              type="checkbox"
+              checked={this.state.itemIsList}
+              onChange={this.toggleItemIsList}
+            />
+          </div>
+          <ul className="toDo-list">
+            {this.props.toDos.map(newToDo => (
+              <ListItem
+                key={newToDo}
+                newToDo={newToDo}
+                createNewToDo={this.props.createNewToDo}
+                removeToDo={this.props.removeToDo}
+              />
+            ))}
+          </ul>
+        </div>
+      );
     }
   };
 
   toggleItemIsList = e => {
     this.setState({
-      itemIsList: true
+      itemIsList: e.target.checked
     });
+    console.log(this.state.itemIsList);
   };
 
   render() {
@@ -48,7 +70,7 @@ class List extends React.Component {
           <span>Is this item a list?</span>
           <input
             type="checkbox"
-            checked={this.itemIsList}
+            checked={this.state.itemIsList}
             onChange={this.toggleItemIsList}
           />
         </div>
