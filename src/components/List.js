@@ -5,7 +5,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemIsList: false
+      itemIsList: true
     };
   }
   appendNewToDo = e => {
@@ -16,7 +16,7 @@ class List extends React.Component {
     // Provisional attempt at creating a list within a list. Not working yet, but getting closer, I think.
     if (this.state.itemIsList === true) {
       return (
-        <div className="list-container">
+        <div className="inner-list-container">
           <div className="title-container">
             <h1>Hey</h1>
           </div>
@@ -48,6 +48,7 @@ class List extends React.Component {
     }
   };
 
+  // The checkbox and toggleItemIsList are not functioning as expected. Ticking the box makes state false, whilst unchecking makes it true. Whoops!
   toggleItemIsList = e => {
     this.setState({
       itemIsList: e.target.checked
