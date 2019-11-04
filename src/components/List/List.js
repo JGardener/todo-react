@@ -5,7 +5,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemIsList: false
+      itemIsList: true
     };
     console.log(this.state.itemIsList);
   }
@@ -14,6 +14,7 @@ class List extends React.Component {
       this.props.createNewToDo(e.target.value);
       e.target.value = "";
     }
+<<<<<<< HEAD:src/components/List/List.js
     // Contained within the appendToDo function after the first if statement =>
     //
     // Provisional attempt at creating a list within a list.Not working yet, but getting closer, I think.
@@ -49,6 +50,41 @@ class List extends React.Component {
     //       </div>
     //     );
     //   }
+=======
+    // Provisional attempt at creating a list within a list. Not working yet, but getting closer, I think.
+    if (this.state.itemIsList === true) {
+      return (
+        <div className="inner-list-container">
+          <div className="title-container">
+            <h1>Hey</h1>
+          </div>
+          <div className="create-new-toDo">
+            <input
+              type="text"
+              onKeyPress={this.appendNewToDo}
+              placeholder='Press "Enter" to add to-do.'
+            />
+            <span>Is this item a list?</span>
+            <input
+              type="checkbox"
+              checked={this.state.itemIsList}
+              onChange={this.toggleItemIsList}
+            />
+          </div>
+          <ul className="toDo-list">
+            {this.props.toDos.map(newToDo => (
+              <ListItem
+                key={newToDo}
+                newToDo={newToDo}
+                createNewToDo={this.props.createNewToDo}
+                removeToDo={this.props.removeToDo}
+              />
+            ))}
+          </ul>
+        </div>
+      );
+    }
+>>>>>>> 1b5a9f4e01e40c07b76043714ff5d8483028a8e0:src/components/List.js
   };
 
   // The checkbox and toggleItemIsList are not functioning as expected. Ticking the box makes state false, whilst unchecking makes it true. Whoops!
