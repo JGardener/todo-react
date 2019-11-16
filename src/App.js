@@ -10,27 +10,8 @@ class App extends React.Component {
     this.state = {
       title: "To-Do List",
       subTitle: "Made in React JS",
-      toDos: []
     };
   }
-
-  createNewToDo = newToDo => {
-    this.setState({
-      toDos: [...this.state.toDos, newToDo]
-    });
-  };
-
-  removeToDo = newToDo => {
-    const toDos = [...this.state.toDos];
-    const index = toDos.indexOf(newToDo);
-
-    if (index > -1) {
-      toDos.splice(index, 1);
-      this.setState({
-        toDos: toDos
-      });
-    }
-  };
 
   render() {
     return (
@@ -38,9 +19,6 @@ class App extends React.Component {
         <List
           title={this.state.title}
           subTitle={this.state.subTitle}
-          toDos={this.state.toDos}
-          createNewToDo={this.createNewToDo}
-          removeToDo={this.removeToDo}
         />
       </div>
     );

@@ -1,42 +1,55 @@
 import React from "react";
 import ListItem from "../components/ListItem";
+import CreateToDo from "./CreateToDo";
 
 class List extends React.Component {
-  appendNewToDo = e => {
-    if (e.key === "Enter") {
-      this.props.createNewToDo(e.target.value);
-      e.target.value = "";
-    }
-  };
+    state = {
+        toDos: [],
+    };
 
-  render() {
-    return (
-      <div className="list-container">
-        <div className="title-container">
-          <h1>{this.props.title}</h1>
-          <h6>{this.props.subTitle}</h6>
-        </div>
-        <div className="create-new-toDo">
-          <input
-            type="text"
-            onKeyPress={this.appendNewToDo}
-            placeholder='Press "Enter" to add your new to-do.'
-          />
-        </div>
-        <ul className="toDo-list">
-          {this.props.toDos.map(newToDo => (
-            <ListItem
-              key={newToDo}
-              newToDo={newToDo}
-              createNewToDo={this.props.createNewToDo}
-              removeToDo={this.props.removeToDo}
-            />
-          ))}
-        </ul>
-      </div>
-    );
-  }
+    createNewToDo = newToDo => {
+        this.setState({
+            toDos: [
+                ...this.state.toDos,
+                newToDo
+            ]
+        })
+    };
+
+    removeToDo = newToDo => {
+        const toDos = [...this.state.toDos];
+        const index = toDos.indexOf(newToDo);
+
+        if (index > -1) {
+            toDos.splice(index, 1);
+            this.setState({
+                toDos: toDos
+            });
+        }
+    };
+
+    render() {
+        return (
+          <div className="list-container">
+            <div className="title-container">
+              <h1>{this.props.title}</h1>
+              <h6>{this.props.subTitle}</h6>
+            </div>
+            <CreateToDo createNewToDo={this.createNewToDo} />
+            <ul className="toDo-list">
+              {this.state.toDos.map(toDo => (
+                <ListItem
+                  key={toDo}
+                  newToDo={toDo}
+                  removeToDo={this.removeToDo}
+                />
+              ))}
+            </ul>
+          </div>
+        );
+    }
 }
+
 // == THE OLD WAY YOU DID IT. WE LEARNED SOMETHING TODAY BOYS!
 // == Moved away from a functional component, to a class due to a requirement of handling lists within lists.
 // const List = ({ title, subTitle, toDos, createNewToDo, removeToDo }) => {
@@ -46,7 +59,6 @@ class List extends React.Component {
 //       e.target.value = "";
 //     }
 //   };
-
 //   return (
 //     <div className="list-container">
 //       <div className="title-container">
